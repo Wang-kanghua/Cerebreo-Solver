@@ -1,0 +1,605 @@
+[
+  {
+    "testpoint_id": "T1",
+    "bins": [
+      {
+        "bin_id": "BIN_T1_1",
+        "description": "Execute ADD operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_2",
+        "description": "Execute SUB operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_3",
+        "description": "Execute AND operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_4",
+        "description": "Execute OR operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_5",
+        "description": "Execute XOR operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_6",
+        "description": "Execute SLL operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_7",
+        "description": "Execute SRL operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_8",
+        "description": "Execute SRA operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_9",
+        "description": "Execute SLT operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_10",
+        "description": "Execute SLTU operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_11",
+        "description": "Execute SW operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_12",
+        "description": "Execute SH operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_13",
+        "description": "Execute SB operation at least once"
+      },
+      {
+        "bin_id": "BIN_T1_14",
+        "description": "Execute JAL operation at least once"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T2",
+    "bins": [
+      {
+        "bin_id": "BIN_T2_1",
+        "description": "Execute ADD operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_2",
+        "description": "Execute SUB operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_3",
+        "description": "Execute AND operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_4",
+        "description": "Execute OR operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_5",
+        "description": "Execute XOR operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_6",
+        "description": "Execute SLL operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_7",
+        "description": "Execute SRL operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_8",
+        "description": "Execute SRA operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_9",
+        "description": "Execute SLT operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_10",
+        "description": "Execute SLTU operation with register zero as destination (rd)"
+      },
+      {
+        "bin_id": "BIN_T2_11",
+        "description": "Execute JAL operation with register zero as destination (rd)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T3",
+    "bins": [
+      {
+        "bin_id": "BIN_T3_1",
+        "description": "Execute ADD operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_2",
+        "description": "Execute SUB operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_3",
+        "description": "Execute AND operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_4",
+        "description": "Execute OR operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_5",
+        "description": "Execute XOR operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_6",
+        "description": "Execute SLL operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_7",
+        "description": "Execute SRL operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_8",
+        "description": "Execute SRA operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_9",
+        "description": "Execute SLT operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_10",
+        "description": "Execute SLTU operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_11",
+        "description": "Execute SW operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_12",
+        "description": "Execute SH operation with register zero as source register (rs1 or rs2)"
+      },
+      {
+        "bin_id": "BIN_T3_13",
+        "description": "Execute SB operation with register zero as source register (rs1 or rs2)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T4",
+    "bins": [
+      {
+        "bin_id": "BIN_T4_1",
+        "description": "Execute ADD operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_2",
+        "description": "Execute SUB operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_3",
+        "description": "Execute AND operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_4",
+        "description": "Execute OR operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_5",
+        "description": "Execute XOR operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_6",
+        "description": "Execute SLL operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_7",
+        "description": "Execute SRL operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_8",
+        "description": "Execute SRA operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_9",
+        "description": "Execute SLT operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_10",
+        "description": "Execute SLTU operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_11",
+        "description": "Execute SW operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_12",
+        "description": "Execute SH operation with both source registers being the same register file"
+      },
+      {
+        "bin_id": "BIN_T4_13",
+        "description": "Execute SB operation with both source registers being the same register file"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T5",
+    "bins": [
+      {
+        "bin_id": "BIN_T5_1",
+        "description": "Execute JAL operation with forward jump (positive immediate value)"
+      },
+      {
+        "bin_id": "BIN_T5_2",
+        "description": "Execute JAL operation with backward jump (negative immediate value)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T6",
+    "bins": [
+      {
+        "bin_id": "BIN_T6_ADD_1",
+        "description": "Current instruction reads from a register which previous ADD instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_SUB_1",
+        "description": "Current instruction reads from a register which previous SUB instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_AND_1",
+        "description": "Current instruction reads from a register which previous AND instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_OR_1",
+        "description": "Current instruction reads from a register which previous OR instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_XOR_1",
+        "description": "Current instruction reads from a register which previous XOR instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_SLL_1",
+        "description": "Current instruction reads from a register which previous SLL instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_SRL_1",
+        "description": "Current instruction reads from a register which previous SRL instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_SRA_1",
+        "description": "Current instruction reads from a register which previous SRA instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_SLT_1",
+        "description": "Current instruction reads from a register which previous SLT instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_SLTU_1",
+        "description": "Current instruction reads from a register which previous SLTU instruction wrote to"
+      },
+      {
+        "bin_id": "BIN_T6_JAL_1",
+        "description": "Current instruction reads from a register which previous JAL instruction wrote to"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T7",
+    "bins": [
+      {
+        "bin_id": "BIN_T7_ADD_ADD",
+        "description": "ADD operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SUB",
+        "description": "SUB operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_AND",
+        "description": "AND operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_OR",
+        "description": "OR operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_XOR",
+        "description": "XOR operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SLL",
+        "description": "SLL operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SRL",
+        "description": "SRL operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SRA",
+        "description": "SRA operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SLT",
+        "description": "SLT operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SLTU",
+        "description": "SLTU operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SW",
+        "description": "SW operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SH",
+        "description": "SH operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SB",
+        "description": "SB operation following ADD operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_ADD",
+        "description": "ADD operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SUB",
+        "description": "SUB operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_AND",
+        "description": "AND operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_OR",
+        "description": "OR operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_XOR",
+        "description": "XOR operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SLL",
+        "description": "SLL operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SRL",
+        "description": "SRL operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SRA",
+        "description": "SRA operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SLT",
+        "description": "SLT operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SLTU",
+        "description": "SLTU operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SW",
+        "description": "SW operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SH",
+        "description": "SH operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_SUB_SB",
+        "description": "SB operation following SUB operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_ADD",
+        "description": "ADD operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SUB",
+        "description": "SUB operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_AND",
+        "description": "AND operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_OR",
+        "description": "OR operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_XOR",
+        "description": "XOR operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SLL",
+        "description": "SLL operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SRL",
+        "description": "SRL operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SRA",
+        "description": "SRA operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SLT",
+        "description": "SLT operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SLTU",
+        "description": "SLTU operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SW",
+        "description": "SW operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SH",
+        "description": "SH operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_AND_SB",
+        "description": "SB operation following AND operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_ADD",
+        "description": "ADD operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SUB",
+        "description": "SUB operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_AND",
+        "description": "AND operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_OR",
+        "description": "OR operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_XOR",
+        "description": "XOR operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SLL",
+        "description": "SLL operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SRL",
+        "description": "SRL operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SRA",
+        "description": "SRA operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SLT",
+        "description": "SLT operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SLTU",
+        "description": "SLTU operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SW",
+        "description": "SW operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SH",
+        "description": "SH operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_OR_SB",
+        "description": "SB operation following OR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_ADD",
+        "description": "ADD operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SUB",
+        "description": "SUB operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_AND",
+        "description": "AND operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_OR",
+        "description": "OR operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_XOR",
+        "description": "XOR operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SLL",
+        "description": "SLL operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SRL",
+        "description": "SRL operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SRA",
+        "description": "SRA operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SLT",
+        "description": "SLT operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SLTU",
+        "description": "SLTU operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SW",
+        "description": "SW operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SH",
+        "description": "SH operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_XOR_SB",
+        "description": "SB operation following XOR operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_ADD",
+        "description": "ADD operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SUB",
+        "description": "SUB operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_AND",
+        "description": "AND operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_OR",
+        "description": "OR operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_XOR",
+        "description": "XOR operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SLL",
+        "description": "SLL operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SRL",
+        "description": "SRL operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SRA",
+        "description": "SRA operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SLT",
+        "description": "SLT operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SLTU",
+        "description": "SLTU operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SW",
+        "description": "SW operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SH",
+        "description": "SH operation following JAL operation causing RaW hazard"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SB",
+        "description": "SB operation following JAL operation causing RaW hazard"
+      }
+    ]
+  }
+]
