@@ -180,6 +180,6 @@ if __name__ == "__main__":
         output_file=OUTPUT_FILE
     )
     
-    # 打印摘要
     total_bins = sum(len(result.get('bins', [])) for result in results)
     print(f"sum bins: {total_bins} ")
+
