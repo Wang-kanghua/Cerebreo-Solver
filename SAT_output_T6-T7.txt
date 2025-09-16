@@ -1,0 +1,172 @@
+[
+  {
+    "testpoint_id": "T6",
+    "bins": [
+      {
+        "bin_id": "BIN_T6_ADD_1",
+        "description": "Current instruction reads from a register which previous ADD instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SUB_1",
+        "description": "Current instruction reads from a register which previous SUB instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0100000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_AND_1",
+        "description": "Current instruction reads from a register which previous AND instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b111) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_OR_1",
+        "description": "Current instruction reads from a register which previous OR instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b110) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_XOR_1",
+        "description": "Current instruction reads from a register which previous XOR instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b100) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SLL_1",
+        "description": "Current instruction reads from a register which previous SLL instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b001) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SRL_1",
+        "description": "Current instruction reads from a register which previous SRL instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b101) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SRA_1",
+        "description": "Current instruction reads from a register which previous SRA instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b101) & (prev_instruction[31:25] == 0b0100000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SLT_1",
+        "description": "Current instruction reads from a register which previous SLT instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b010) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SLTU_1",
+        "description": "Current instruction reads from a register which previous SLTU instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b011) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_JAL_1",
+        "description": "Current instruction reads from a register which previous JAL instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T7",
+    "bins": [
+      {
+        "bin_id": "BIN_T7_ADD_ADD",
+        "description": "ADD operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SUB",
+        "description": "SUB operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0100000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_AND",
+        "description": "AND operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b111) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_OR",
+        "description": "OR operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b110) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_XOR",
+        "description": "XOR operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b100) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SLL",
+        "description": "SLL operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b001) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SRL",
+        "description": "SRL operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SRA",
+        "description": "SRA operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0100000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SLT",
+        "description": "SLT operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b010) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SLTU",
+        "description": "SLTU operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b011) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SW",
+        "description": "SW operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b010) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SH",
+        "description": "SH operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b001) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_ADD_SB",
+        "description": "SB operation following ADD operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_ADD",
+        "description": "ADD operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SUB",
+        "description": "SUB operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0100000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_AND",
+        "description": "AND operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b111) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_OR",
+        "description": "OR operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b110) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_XOR",
+        "description": "XOR operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b100) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SW",
+        "description": "SW operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b010) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SH",
+        "description": "SH operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b001) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T7_JAL_SB",
+        "description": "SB operation following JAL operation causing RaW hazard",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b000) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      }
+    ]
+  }
+]
