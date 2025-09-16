@@ -1,0 +1,838 @@
+file_name,line_number,assertion_code,line_count
+wrapper.sv,106,assume(ibus_rsp_pending_valid || ibus_rsp_needed || !ibus_rsp_valid);,1
+wrapper.sv,107,assume(dbus_rsp_pending_valid || dbus_rsp_needed || !dbus_rsp_valid);,1
+rvfi_dmem_check.sv,37,assert(dmem_shadow[i*8 +: 8] == rvfi_mem_rdata[i*8 +: 8]);,1
+rvfi_liveness_check.sv,33,assume(rvfi_valid[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_liveness_check.sv,34,assume(!rvfi_halt[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_liveness_check.sv,35,assume(insn_order == rvfi_order[64*`RISCV_FORMAL_CHANNEL_IDX +: 64]);,1
+rvfi_liveness_check.sv,38,assert(found_next_insn);,1
+rvfi_imem_check.sv,41,assert(insn[15:0] == imem_data);,1
+rvfi_imem_check.sv,44,assert(insn[31:16] == imem_data);,1
+rvfi_reg_check.sv,38,assume(rvfi_valid[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_reg_check.sv,39,assume(insn_order == rvfi_order[64*`RISCV_FORMAL_CHANNEL_IDX +: 64]);,1
+rvfi_reg_check.sv,42,assert(register_shadow == rvfi_rs1_rdata[`RISCV_FORMAL_CHANNEL_IDX*`RISCV_FORMAL_XLEN +: `RISCV_FORMAL_XLEN]);,1
+rvfi_reg_check.sv,44,assert(register_shadow == rvfi_rs2_rdata[`RISCV_FORMAL_CHANNEL_IDX*`RISCV_FORMAL_XLEN +: `RISCV_FORMAL_XLEN]);,1
+rvfi_causal_check.sv,36,assume(register_index != 0);,1
+rvfi_causal_check.sv,37,assume(rvfi_valid[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_causal_check.sv,39,assume(insn_order == rvfi_order[64*`RISCV_FORMAL_CHANNEL_IDX +: 64]);,1
+rvfi_causal_check.sv,40,assert(!found_non_causal);,1
+rvfi_unique_check.sv,34,assume(rvfi_valid[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_unique_check.sv,35,assume(insn_order == rvfi_order[64*`RISCV_FORMAL_CHANNEL_IDX +: 64]);,1
+rvfi_unique_check.sv,38,assert(!found_other_insn);,1
+rvfi_pc_fwd_check.sv,38,assume(rvfi_valid[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_pc_fwd_check.sv,39,assume(insn_order == rvfi_order[64*`RISCV_FORMAL_CHANNEL_IDX +: 64]);,1
+rvfi_csrw_check.sv,136,assume (csr_insn_valid);,1
+rvfi_csrw_check.sv,137,assume (csr_insn_addr != csr_none);,1
+rvfi_csrw_check.sv,147,assert (rvfi.trap);,1
+rvfi_csrw_check.sv,148,assert (rvfi.rd_addr == 0);,1
+rvfi_csrw_check.sv,149,assert (rvfi.rd_wdata == 0);,1
+rvfi_csrw_check.sv,151,assert (!rvfi.trap);,1
+rvfi_csrw_check.sv,152,assert (rvfi.rd_addr == rvfi.insn[11:7]);,1
+rvfi_csrw_check.sv,156,assert (rvfi.rd_wdata == 0);,1
+rvfi_csrw_check.sv,158,assert (csr_insn_rmask == {`RISCV_FORMAL_XLEN{1'b1}});,1
+rvfi_csrw_check.sv,159,assert (csr_insn_rdata == rvfi.rd_wdata);,1
+rvfi_csrw_check.sv,168,assert (csr_insn_changed_full[31:0] == 0);,1
+rvfi_csrw_check.sv,170,assert (csr_insn_changed_full[63:32] == 0);,1
+rvfi_csrw_check.sv,175,assert (rvfi.mem_wmask == 0);,1
+rvfi_insn_check.sv,125,cover(spec_valid);,1
+rvfi_insn_check.sv,126,cover(spec_valid && !trap);,1
+rvfi_insn_check.sv,127,cover(check && spec_valid);,1
+rvfi_insn_check.sv,128,cover(check && spec_valid && !trap);,1
+rvfi_insn_check.sv,131,assume(spec_valid);,1
+rvfi_insn_check.sv,134,assert(trap);,1
+rvfi_insn_check.sv,135,assert(rd_addr == 0);,1
+rvfi_insn_check.sv,136,assert(rd_wdata == 0);,1
+rvfi_insn_check.sv,137,assert(mem_wmask == 0);,1
+rvfi_insn_check.sv,144,assert(rs1_rdata == 0);,1
+rvfi_insn_check.sv,147,assert(rs2_rdata == 0);,1
+rvfi_insn_check.sv,151,assert(spec_rs1_addr == rs1_addr);,1
+rvfi_insn_check.sv,154,assert(spec_rs2_addr == rs2_addr);,1
+rvfi_insn_check.sv,156,assert(spec_rd_addr == rd_addr);,1
+rvfi_insn_check.sv,157,assert(spec_rd_wdata == rd_wdata);,1
+rvfi_insn_check.sv,166,assert(mem_wmask[i]);,1
+rvfi_insn_check.sv,167,assert(spec_mem_wdata[i*8 +: 8] == mem_wdata[i*8 +: 8]);,1
+rvfi_insn_check.sv,169,assert(mem_rmask[i]);,1
+rvfi_insn_check.sv,170,assert(mem_rdata[i*8 +: 8] == mem_wdata[i*8 +: 8]);,1
+rvfi_insn_check.sv,173,assert(mem_rmask[i]);,1
+rvfi_insn_check.sv,178,assert(spec_trap == trap);,1
+rvfi_pc_bwd_check.sv,38,assume(rvfi_valid[`RISCV_FORMAL_CHANNEL_IDX]);,1
+rvfi_pc_bwd_check.sv,39,assume(insn_order == rvfi_order[64*`RISCV_FORMAL_CHANNEL_IDX +: 64]);,1
+rvfi_hang_check.sv,31,assert(okay);,1
+rvfi_hang_check.sv,36,assume(!rvfi_halt[channel_idx]);,1
+rvfi_testbench.sv,21,assume property (reset == $initstate);,1
+rvfi_ill_check.sv,46,cover(!reset && check && valid && insn == 0);,1
+rvfi_ill_check.sv,48,assume(valid);,1
+rvfi_ill_check.sv,49,assume(insn == 0);,1
+rvfi_ill_check.sv,50,assert(trap);,1
+rvfi_ill_check.sv,51,assert(rd_addr == 0);,1
+rvfi_ill_check.sv,52,assert(rd_wdata == 0);,1
+rvfi_ill_check.sv,53,assert(mem_wmask == 0);,1
+imemcheck.sv,61,assume(iBus_rsp_inst[15:0] == imem_data);,1
+imemcheck.sv,63,assume(iBus_rsp_inst[31:16] == imem_data);,1
+wrapper.sv,93,restrict(~rvfi_trap && dBusCmdPendingCycles < 4 && dBusRspPendingCycles < 4 && iBusCmdPendingCycles < 4 && iBusRspPendingCycles < 4);,1
+dmemcheck.sv,64,assume(dBus_rsp_data == dmem_data);,1
+coverage.sv,10,assume property (reset == $initstate);,1
+coverage.sv,63,assert (valid_ch0);,1
+coverage.sv,66,assert (valid_ch1);,1
+cover.sv,10,assume property (reset == $initstate);,1
+cover.sv,113,cover (icount_p0 == 1);,1
+cover.sv,114,cover (icount_p0 == 2);,1
+cover.sv,115,cover (icount_p0 == 3);,1
+cover.sv,117,cover (icount_p1 == 1);,1
+cover.sv,118,cover (icount_p1 == 2);,1
+cover.sv,119,cover (icount_p1 == 3);,1
+cover.sv,121,cover (mcount_p0 == 1);,1
+cover.sv,122,cover (mcount_p0 == 2);,1
+cover.sv,123,cover (mcount_p0 == 3);,1
+cover.sv,124,cover (mcount_p0 == 4);,1
+cover.sv,126,cover (mcount_p1 == 1);,1
+cover.sv,127,cover (mcount_p1 == 2);,1
+cover.sv,128,cover (mcount_p1 == 3);,1
+cover.sv,129,cover (mcount_p1 == 4);,1
+cover.sv,131,cover (tcount == 2);,1
+cover.sv,132,cover (tcount == 3);,1
+cover.sv,133,cover (tcount == 4);,1
+muldivlen.sv,33,assume (!io_req_valid);,1
+muldivlen.sv,40,cover (values_ok && job_len == 33);,1
+muldivlen.sv,41,assert (job_len == 33);,1
+muldivlen.sv,44,cover (values_ok && job_len == 33);,1
+muldivlen.sv,45,assert (job_len == 33);,1
+muldivlen.sv,48,cover (values_ok && job_len == 33);,1
+muldivlen.sv,49,assert (job_len == 33);,1
+muldivlen.sv,52,cover (values_ok && job_len == 33);,1
+muldivlen.sv,53,assert (job_len == 33);,1
+muldivlen.sv,56,cover (values_ok && job_len == 34);,1
+muldivlen.sv,57,cover (values_ok && job_len == 35);,1
+muldivlen.sv,58,cover (values_ok && job_len == 36);,1
+muldivlen.sv,59,assert (34 <= job_len && job_len <= 36);,1
+muldivlen.sv,62,cover (values_ok && job_len == 34);,1
+muldivlen.sv,63,assert (job_len == 34);,1
+muldivlen.sv,66,cover (values_ok && job_len == 34);,1
+muldivlen.sv,67,cover (values_ok && job_len == 35);,1
+muldivlen.sv,68,cover (values_ok && job_len == 36);,1
+muldivlen.sv,69,assert (34 <= job_len && job_len <= 36);,1
+muldivlen.sv,72,cover (values_ok && job_len == 34);,1
+muldivlen.sv,73,assert (job_len == 34);,1
+muldivlen.sv,76,cover (values_ok && job_len == 33);,1
+muldivlen.sv,77,assert (job_len == 33);,1
+muldivlen.sv,80,cover (values_ok && job_len == 33);,1
+muldivlen.sv,81,assert (job_len == 33);,1
+muldivlen.sv,84,cover (values_ok && job_len == 33);,1
+muldivlen.sv,85,assert (job_len == 33);,1
+muldivlen.sv,88,cover (values_ok && job_len == 33);,1
+muldivlen.sv,89,assert (job_len == 33);,1
+muldivlen.sv,92,cover (values_ok && job_len == 34);,1
+muldivlen.sv,93,cover (values_ok && job_len == 35);,1
+muldivlen.sv,94,cover (values_ok && job_len == 36);,1
+muldivlen.sv,95,assert (34 <= job_len && job_len <= 36);,1
+muldivlen.sv,98,cover (values_ok && job_len == 34);,1
+muldivlen.sv,99,assert (job_len == 34);,1
+muldivlen.sv,102,cover (values_ok && job_len == 34);,1
+muldivlen.sv,103,cover (values_ok && job_len == 35);,1
+muldivlen.sv,104,cover (values_ok && job_len == 36);,1
+muldivlen.sv,105,assert (34 <= job_len && job_len <= 36);,1
+muldivlen.sv,108,cover (values_ok && job_len == 34);,1
+muldivlen.sv,109,assert (job_len == 34);,1
+muldivlen.sv,115,assume (job_len == 0);,1
+complete.sv,76,assert(spec_valid && !spec_trap);,1
+imemcheck.sv,35,assume(mem_rdata[15:0] == imem_data);,1
+imemcheck.sv,37,assume(mem_rdata[31:16] == imem_data);,1
+wrapper.sv,42,assume (~mem_wait || trap);,1
+wrapper.sv,52,assume (rvfi_insn[19:15] == 0);,1
+wrapper.sv,54,assume (rvfi_insn[14:12] != 3'b001);,1
+wrapper.sv,55,assume (rvfi_insn[14:12] != 3'b011);,1
+wrapper.sv,56,assume (rvfi_insn[14:12] != 3'b101);,1
+wrapper.sv,57,assume (rvfi_insn[14:12] != 3'b110);,1
+wrapper.sv,58,assume (rvfi_insn[14:12] != 3'b111);,1
+honest.sv,48,assume (mem_rdata == monitor_insn);,1
+cover.sv,59,cover property (count_dmemrd);,1
+cover.sv,60,cover property (count_dmemwr);,1
+cover.sv,61,cover property (count_longinsn);,1
+cover.sv,62,cover property (count_comprinsn);,1
+cover.sv,64,cover property (count_dmemrd >= 1 && count_dmemwr >= 1 && count_longinsn >= 1 && count_comprinsn >= 1);,1
+cover.sv,65,cover property (count_dmemrd >= 2 && count_dmemwr >= 2 && count_longinsn >= 2 && count_comprinsn >= 2);,1
+cover.sv,66,cover property (count_dmemrd >= 3 && count_dmemwr >= 2 && count_longinsn >= 2 && count_comprinsn >= 2);,1
+cover.sv,67,cover property (count_dmemrd >= 2 && count_dmemwr >= 3 && count_longinsn >= 2 && count_comprinsn >= 2);,1
+cover.sv,68,cover property (count_dmemrd >= 2 && count_dmemwr >= 2 && count_longinsn >= 3 && count_comprinsn >= 2);,1
+cover.sv,69,cover property (count_dmemrd >= 2 && count_dmemwr >= 2 && count_longinsn >= 2 && count_comprinsn >= 3);,1
+dmemcheck.sv,42,assume(dmem_data == mem_rdata);,1
+wrapper.sv,44,assume (!ibus_ack);,1
+wrapper.sv,47,assume (!ibus_ack);,1
+wrapper.sv,54,assume (!dbus_ack);,1
+wrapper.sv,57,assume (!dbus_ack);,1
+wrapper.sv,75,assume (!timeout_ibus[2]);,1
+wrapper.sv,76,assume (!timeout_dbus[2]);,1
+cover.sv,17,cover (rvfi_valid);,1
+top.sv,37,assume (pc[1:0] == 0);,1
+top.sv,115,assert ( nx1 == x1);,1
+top.sv,116,assert ( nx2 == x2);,1
+top.sv,117,assert ( nx3 == x3);,1
+top.sv,118,assert ( nx4 == x4);,1
+top.sv,119,assert ( nx5 == x5);,1
+top.sv,120,assert ( nx6 == x6);,1
+top.sv,121,assert ( nx7 == x7);,1
+top.sv,122,assert ( nx8 == x8);,1
+top.sv,123,assert ( nx9 == x9);,1
+top.sv,124,assert (nx10 == x10);,1
+top.sv,125,assert (nx11 == x11);,1
+top.sv,126,assert (nx12 == x12);,1
+top.sv,127,assert (nx13 == x13);,1
+top.sv,128,assert (nx14 == x14);,1
+top.sv,129,assert (nx15 == x15);,1
+top.sv,130,assert (nx16 == x16);,1
+top.sv,131,assert (nx17 == x17);,1
+top.sv,132,assert (nx18 == x18);,1
+top.sv,133,assert (nx19 == x19);,1
+top.sv,134,assert (nx20 == x20);,1
+top.sv,135,assert (nx21 == x21);,1
+top.sv,136,assert (nx22 == x22);,1
+top.sv,137,assert (nx23 == x23);,1
+top.sv,138,assert (nx24 == x24);,1
+top.sv,139,assert (nx25 == x25);,1
+top.sv,140,assert (nx26 == x26);,1
+top.sv,141,assert (nx27 == x27);,1
+top.sv,142,assert (nx28 == x28);,1
+top.sv,143,assert (nx29 == x29);,1
+top.sv,144,assert (nx30 == x30);,1
+top.sv,145,assert (nx31 == x31);,1
+top.sv,146,assert (npc == 32'h0);,1
+top.sv,147,assert (ren == 1'b0);,1
+top.sv,148,assert (wen == 1'b0);,1
+top.sv,149,assert (excep);,1
+top.sv,182,assert (npc == spec_pc_wdata);,1
+top.sv,183,assert (ren == spec_mem_rmask);,1
+top.sv,184,assert (wen == spec_mem_wmask);,1
+top.sv,186,assert (raddr == spec_mem_addr);,1
+top.sv,189,assert (waddr == spec_mem_addr);,1
+top.sv,195,assert (!excep);,1
+coverage.sv,23,assert(riscv_rv32i_valid == |insn_valid_rv32i);,1
+coverage.sv,24,assert(riscv_rv32ic_valid == |insn_valid_rv32ic);,1
+coverage.sv,50,assert(riscv_rv64i_valid == |insn_valid_rv64i);,1
+coverage.sv,51,assert(riscv_rv64ic_valid == |insn_valid_rv64ic);,1
+cdc_fifo_2phase.sv,44,assert(LOG_DEPTH > 0);,1
+find_first_one.sv,31,assert(WIDTH >= 0);,1
+axi_join.sv,28,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_join.sv,29,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_join.sv,30,assert(in.AXI_ID_WIDTH <= out.AXI_ID_WIDTH );,1
+axi_join.sv,31,assert(in.AXI_USER_WIDTH == out.AXI_USER_WIDTH);,1
+axi_lite_join.sv,28,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_lite_join.sv,29,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_modify_address.sv,155,assert(AXI_SLV_PORT_ADDR_WIDTH > 0);,1
+axi_modify_address.sv,156,assert(AXI_MST_PORT_ADDR_WIDTH > 0);,1
+axi_modify_address.sv,157,assert(AXI_DATA_WIDTH > 0);,1
+axi_modify_address.sv,158,assert(AXI_ID_WIDTH > 0);,1
+axi_multicut.sv,83,assert(NoCuts >= 0);,1
+axi_lite_to_axi.sv,107,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_lite_to_axi.sv,108,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_lite_to_axi.sv,109,assert(AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+cdc_fifo_2phase.sv,44,assert(LOG_DEPTH > 0);,1
+find_first_one.sv,31,assert(WIDTH >= 0);,1
+axi_join.sv,28,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_join.sv,29,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_join.sv,30,assert(in.AXI_ID_WIDTH <= out.AXI_ID_WIDTH );,1
+axi_join.sv,31,assert(in.AXI_USER_WIDTH == out.AXI_USER_WIDTH);,1
+axi_lite_join.sv,28,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_lite_join.sv,29,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_modify_address.sv,155,assert(AXI_SLV_PORT_ADDR_WIDTH > 0);,1
+axi_modify_address.sv,156,assert(AXI_MST_PORT_ADDR_WIDTH > 0);,1
+axi_modify_address.sv,157,assert(AXI_DATA_WIDTH > 0);,1
+axi_modify_address.sv,158,assert(AXI_ID_WIDTH > 0);,1
+axi_multicut.sv,83,assert(NoCuts >= 0);,1
+axi_lite_to_axi.sv,107,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_lite_to_axi.sv,108,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_lite_to_axi.sv,109,assert(AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+CHECKER.sv,187,"assert property(ASSERT_1) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 1 is violated ""); $display(""%0s"", reset_color); $fatal; end",1
+CHECKER.sv,191,"assert property(ASSERT_1) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 1 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Index_Check) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Update) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Check_Valid_Date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_3) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 3 is violated ""); $display(""%0s"", reset_color); $fatal; end",5
+CHECKER.sv,200,"assert property(ASSERT_1) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 1 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Index_Check) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Update) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Check_Valid_Date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_3) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 3 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_4_Index_Check) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 4 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_4_Update) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 4 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_4_Check_Valid_Date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 4 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_action) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_formula) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_mode) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_data_no) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_index) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end",14
+CHECKER.sv,187,"assert property(ASSERT_1) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 1 is violated ""); $display(""%0s"", reset_color); $fatal; end",1
+CHECKER.sv,191,"assert property(ASSERT_1) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 1 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Index_Check) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Update) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Check_Valid_Date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_3) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 3 is violated ""); $display(""%0s"", reset_color); $fatal; end",5
+CHECKER.sv,200,"assert property(ASSERT_1) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 1 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Index_Check) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Update) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_2_Check_Valid_Date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 2 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_3) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 3 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_4_Index_Check) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 4 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_4_Update) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 4 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_4_Check_Valid_Date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 4 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_action) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_formula) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_mode) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_date) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_data_no) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end assert property(ASSERT_5_index) else begin $display(""%0s"", txt_red_prefix); $display("" Assertion 5 is violated ""); $display(""%0s"", reset_color); $fatal; end",14
+noc_if.sv,108,assert(VC_W > 0);,1
+noc_if.sv,109,assert(X_W > 0);,1
+noc_if.sv,110,assert(Y_W > 0);,1
+DatapathPipelined.sv,254,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathPipelined.sv,255,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathMultiCycle.sv,89,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathMultiCycle.sv,90,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,126,assert (!insn.ARVALID || insn.ARADDR[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,127,assert (!data.ARVALID || data.ARADDR[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,128,assert (!data.AWVALID || data.AWADDR[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,130,assert (insn.ARPROT == 3'd0);,1
+DatapathAxilMemory.sv,131,assert (data.ARPROT == 3'd0);,1
+DatapathAxilMemory.sv,132,assert (data.AWPROT == 3'd0);,1
+DatapathAxilMemory.sv,352,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,353,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathSingleCycle.sv,247,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathSingleCycle.sv,248,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathPipelined.sv,254,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathPipelined.sv,255,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,126,assert (!insn.ARVALID || insn.ARADDR[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,127,assert (!data.ARVALID || data.ARADDR[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,128,assert (!data.AWVALID || data.AWADDR[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,130,assert (insn.ARPROT == 3'd0);,1
+DatapathAxilMemory.sv,131,assert (data.ARPROT == 3'd0);,1
+DatapathAxilMemory.sv,132,assert (data.AWPROT == 3'd0);,1
+DatapathAxilMemory.sv,352,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathAxilMemory.sv,353,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathMultiCycle.sv,89,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathMultiCycle.sv,90,assert (addr_to_dmem[1:0] == 2'b00);,1
+DatapathSingleCycle.sv,247,assert (pc_to_imem[1:0] == 2'b00);,1
+DatapathSingleCycle.sv,248,assert (addr_to_dmem[1:0] == 2'b00);,1
+minilab_tb.sv,137,assert property(reset_clears_signals) else $error("Reset did not clear signals properly");,2
+minilab_tb.sv,137,assert property(reset_clears_signals) else $error("Reset did not clear signals properly");,2
+tb.sv,270,assert (a_count <= max_transfers);,1
+tb.sv,283,assert (b_count <= max_transfers);,1
+tb.sv,272,assert (a_count <= max_transfers);,1
+tb.sv,285,assert (b_count <= max_transfers);,1
+CHECKER_iclab081.sv,139,assert property (reset_check) else begin $error("Assertion 1 is violated");,3
+CHECKER_iclab081.sv,170,assert property (complete_check) else begin $error("Assertion 3 is violated");,3
+CHECKER_iclab081.sv,175,assert property (complete_check) else begin $error("Assertion 3 is violated");,3
+CHECKER_iclab081.sv,180,assert property (complete_check) else begin $error("Assertion 3 is violated");,3
+CHECKER_iclab081.sv,191,assert property (formula_valid_check) else begin $error("Assertion 4 is violated");,3
+CHECKER_iclab081.sv,202,assert property (mode_valid_check) else begin $error("Assertion 4 is violated");,3
+CHECKER_iclab081.sv,213,assert property (date_valid_check) else begin $error("Assertion 4 is violated");,3
+CHECKER_iclab081.sv,224,assert property (data_no_valid_check) else begin $error("Assertion 4 is violated");,3
+CHECKER_iclab081.sv,235,assert property (index_valid_check) else begin $error("Assertion 4 is violated");,3
+CHECKER_iclab081.sv,246,assert property (overlap_check) else begin $error("Assertion 5 is violated");,3
+CHECKER_iclab081.sv,257,assert property (out_valid_check) else begin $error("Assertion 6 is violated");,3
+CHECKER_iclab081.sv,269,assert property (next_input_check) else begin $error("Assertion 7 is violated");,3
+CHECKER_iclab081.sv,280,assert property (date_check) else begin $error("Assertion 8 is violated");,3
+CHECKER_iclab081.sv,291,assert property (dram_check) else begin,2
+CHECKER.sv,354,assert property (AssertSpec1) else assertion_violated("1");,1
+axi_join.sv,552,assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);,1
+axi_join.sv,553,assert(in.AXI_DATA_WIDTH == out.AXI_DATA_WIDTH);,1
+axi_join.sv,554,assert(in.AXI_ID_WIDTH <= out.AXI_ID_WIDTH );,1
+axi_join.sv,555,assert(in.AXI_USER_WIDTH == out.AXI_USER_WIDTH);,1
+sram_mem.sv,55,assert(num_words*WidthBytes <= PreloadBufferSize);,1
+ariane_pkg.sv,85,assert(Cfg.RASDepth > 0);,1
+ariane_pkg.sv,88,assert(Cfg.NrNonIdempotentRules <= NrMaxRules);,1
+ariane_pkg.sv,89,assert(Cfg.NrExecuteRegionRules <= NrMaxRules);,1
+ariane_pkg.sv,90,assert(Cfg.NrCachedRegionRules <= NrMaxRules);,1
+ariane_pkg.sv,91,assert(Cfg.NrPMPEntries <= 16);,1
+picorv32.v,2109,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32.v,2112,restrict property (resetn != $initstate);,1
+picorv32.v,2122,assert (mem_wstrb == 0);,1
+picorv32.v,2134,assert (ok);,1
+picorv32.v,2152,assert(mem_valid);,1
+picorv32.v,2153,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2154,assert(mem_wstrb == 0);,1
+picorv32.v,2157,assert(mem_valid);,1
+picorv32.v,2158,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2159,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32.v,2160,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32.v,2163,assert(!mem_valid || mem_ready);,1
+hazard3_frontend.v,181,assert(!fifo_valid[1]);,1
+hazard3_frontend.v,364,assert(ctr_flush_pending <= pending_fetches);,1
+hazard3_frontend.v,365,assert(pending_fetches < 2'd3);,1
+hazard3_frontend.v,514,assert(cir_vld <= 2);,1
+hazard3_frontend.v,515,assert(cir_use <= cir_vld);,1
+hazard3_frontend.v,517,assert(buf_level_next >= level_next_no_fetch);,1
+hazard3_frontend.v,536,assert(buf_level != 2'h3);,1
+hazard3_shift_barrel.v,55,assert(dout == din >> shamt);,1
+hazard3_shift_barrel.v,57,assert(dout == din << shamt);,1
+hazard3_instr_decompress.v,443,assert(uop_ctr == 4'h0 || in_uop_seq);,1
+hazard3_instr_decompress.v,445,assert(in_uop_seq);,1
+hazard3_instr_decompress.v,446,assert(instr_out_uop_stall || uop_ctr_nxt == 4'h0);,1
+hazard3_power_ctrl.v,137,assert(past_sleeping);,1
+hazard3_power_ctrl.v,139,assert(sleeping_on_wfi|| sleeping_on_block);,1
+hazard3_power_ctrl.v,142,assert(!past_stall_release);,1
+hazard3_power_ctrl.v,145,assert(allow_power_down || allow_clkgate);,1
+hazard3_muldiv_seq.v,274,assert(op_rdy);,1
+hazard3_muldiv_seq.v,290,assert(alive);,1
+hazard3_core.v,448,assert(d_rs1_predecoded == d_rs1);,1
+hazard3_core.v,450,assert(d_rs2_predecoded == d_rs2);,1
+hazard3_core.v,453,assert(~|d_rs1);,1
+hazard3_core.v,455,assert(~|d_rs2);,1
+hazard3_core.v,548,assert(x_amo_phase == 3'h0 || x_amo_phase == 3'h2 || x_amo_phase == 3'h4);,1
+hazard3_core.v,553,assert(x_unaligned_addr);,1
+hazard3_core.v,560,assert(x_amo_phase == 3'h0);,1
+hazard3_core.v,592,assert(x_amo_phase <= 3'h4);,1
+hazard3_core.v,595,assert(x_amo_phase == 3'h0);,1
+hazard3_core.v,598,assert(x_amo_phase == 3'h0);,1
+hazard3_core.v,602,assert(!x_stall || m_stall);,1
+hazard3_core.v,606,assert(x_unaligned_addr);,1
+hazard3_core.v,610,assert(!x_unaligned_addr);,1
+hazard3_core.v,617,assert(!m_stall);,1
+hazard3_core.v,1092,assert(xm_except == EXCEPT_LOAD_FAULT || xm_except == EXCEPT_STORE_FAULT);,1
+hazard3_core.v,1104,assert(xm_memop != MEMOP_NONE);,1
+hazard3_core.v,1113,assert(!xm_except_to_d_mode);,1
+hazard3_core.v,1114,assert(!xm_sleep_wfi);,1
+hazard3_core.v,1115,assert(!xm_sleep_block);,1
+hazard3_core.v,1116,assert(!unblock_out);,1
+hazard3_core.v,1124,assert(!bus_aph_req_d);,1
+hazard3_core.v,1134,assert(!bus_aph_req_d);,1
+hazard3_core.v,1139,assert(xm_memop == MEMOP_NONE || xm_memop == MEMOP_AMO);,1
+hazard3_core.v,1323,assert(m_reg_wen_if_nonzero);,1
+hazard3_core.v,1325,assert(~|xm_rd);,1
+hazard3_csr.v,1382,assume(except == EXCEPT_NONE || except == EXCEPT_MRET);,1
+hazard3_csr.v,1409,assert(!wen);,1
+hazard3_csr.v,1413,assert(except != EXCEPT_MRET);,1
+hazard3_csr.v,1417,assert(except != EXCEPT_MRET);,1
+hazard3_csr.v,1439,assert(trap_enter_vld);,1
+hazard3_csr.v,1441,assert(!trap_is_irq);,1
+hazard3_csr.v,1446,assert(except == EXCEPT_EBREAK);,1
+hazard3_csr.v,1451,assert(!loadstore_dphase_pending);,1
+hazard3_csr.v,1459,assert(trap_enter_vld);,1
+tdt_dm.v,3488,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3491,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3493,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dm.v,3496,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dm.v,3498,assert property(when_anyunavail_is_high_anyrunning_must_be_low);,1
+tdt_dm.v,3501,assert property(when_anyunavail_is_high_anyrunning_must_be_low);,1
+tdt_dm.v,3503,assert property(when_anyunavail_is_high_anyhalted_must_be_low);,1
+tdt_dm.v,3506,assert property(when_anyunavail_is_high_anyhalted_must_be_low);,1
+tdt_dm.v,3508,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3511,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3513,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dm.v,3516,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dtm_ctrl.v,479,assert property(jtag2_read_not_update_idr);,1
+tdt_dtm_ctrl.v,482,assert property(jtag2_read_not_update_idr);,1
+tdt_dtm_ctrl.v,484,assert property(jtag2_write_not_capture_idr);,1
+tdt_dtm_ctrl.v,487,assert property(jtag2_write_not_capture_idr);,1
+tdt_dtm_idr.v,219,assert property(update_dr_in_dmi_running_cannot_change_dmi_address);,1
+tdt_dtm_idr.v,222,assert property(update_dr_in_dmi_running_cannot_change_dmi_address);,1
+tdt_dtm_idr.v,224,assert property(update_dr_in_dmi_running_cannot_change_dmi_op);,1
+tdt_dtm_idr.v,227,assert property(update_dr_in_dmi_running_cannot_change_dmi_op);,1
+tdt_dtm_idr.v,229,assert property(update_dr_in_dmi_running_cannot_change_dmi_data);,1
+tdt_dtm_idr.v,232,assert property(update_dr_in_dmi_running_cannot_change_dmi_data);,1
+tdt_dtm_idr.v,234,assert property(update_dr_in_dmi_running_cannot_start_a_new_operation);,1
+tdt_dtm_idr.v,237,assert property(update_dr_in_dmi_running_cannot_start_a_new_operation);,1
+tdt_dtm_idr.v,239,assert property(set_op_when_capture_dr_in_dmi_running);,1
+tdt_dtm_idr.v,242,assert property(set_op_when_capture_dr_in_dmi_running);,1
+picorv32.v,2106,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32.v,2109,restrict property (resetn != $initstate);,1
+picorv32.v,2119,assert (mem_wstrb == 0);,1
+picorv32.v,2131,assert (ok);,1
+picorv32.v,2149,assert(mem_valid);,1
+picorv32.v,2150,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2151,assert(mem_wstrb == 0);,1
+picorv32.v,2154,assert(mem_valid);,1
+picorv32.v,2155,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2156,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32.v,2157,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32.v,2160,assert(!mem_valid || mem_ready);,1
+axi2wb.v,340,assert(faxi_awr_outstanding <= 1);,1
+axi2wb.v,341,assert(faxi_wr_outstanding <= 1);,1
+axi2wb.v,342,assert(faxi_rd_outstanding <= 1);,1
+axi2wb.v,346,assert(!o_wb_we);,1
+axi2wb.v,347,assert(!o_wb_stb);,1
+axi2wb.v,348,assert(!o_wb_cyc);,1
+axi2wb.v,349,assert(!aw_req);,1
+axi2wb.v,350,assert(!ar_req);,1
+axi2wb.v,351,assert(!w_req);,1
+axi2wb.v,352,assert(faxi_awr_outstanding == 0);,1
+axi2wb.v,353,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,354,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,357,assert(!o_wb_we);,1
+axi2wb.v,358,assert(!o_wb_stb);,1
+axi2wb.v,359,assert(!o_wb_cyc);,1
+axi2wb.v,361,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,362,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,367,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,370,assert(faxi_awr_outstanding == 0);,1
+axi2wb.v,371,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,375,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,378,assert(faxi_awr_outstanding == 0);,1
+axi2wb.v,379,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,383,assert(0);,1
+axi2wb.v,340,assert(faxi_awr_outstanding <= 1);,1
+axi2wb.v,341,assert(faxi_wr_outstanding <= 1);,1
+axi2wb.v,342,assert(faxi_rd_outstanding <= 1);,1
+axi2wb.v,346,assert(!o_wb_we);,1
+axi2wb.v,347,assert(!o_wb_stb);,1
+axi2wb.v,348,assert(!o_wb_cyc);,1
+axi2wb.v,349,assert(!aw_req);,1
+axi2wb.v,350,assert(!ar_req);,1
+axi2wb.v,351,assert(!w_req);,1
+axi2wb.v,352,assert(faxi_awr_outstanding == 0);,1
+axi2wb.v,353,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,354,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,357,assert(!o_wb_we);,1
+axi2wb.v,358,assert(!o_wb_stb);,1
+axi2wb.v,359,assert(!o_wb_cyc);,1
+axi2wb.v,361,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,362,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,367,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,370,assert(faxi_awr_outstanding == 0);,1
+axi2wb.v,371,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,375,assert(faxi_rd_outstanding == 0);,1
+axi2wb.v,378,assert(faxi_awr_outstanding == 0);,1
+axi2wb.v,379,assert(faxi_wr_outstanding == 0);,1
+axi2wb.v,383,assert(0);,1
+picorv32.v,2109,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32.v,2112,restrict property (resetn != $initstate);,1
+picorv32.v,2122,assert (mem_wstrb == 0);,1
+picorv32.v,2134,assert (ok);,1
+picorv32.v,2152,assert(mem_valid);,1
+picorv32.v,2153,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2154,assert(mem_wstrb == 0);,1
+picorv32.v,2157,assert(mem_valid);,1
+picorv32.v,2158,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2159,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32.v,2160,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32.v,2163,assert(!mem_valid || mem_ready);,1
+sv_immediate_assert.v,6,assert(i == 1);,1
+sv_immediate_assert.v,7,assert(i == 0);,1
+sv_immediate_assume.v,6,assume(i == 1);,1
+sv_immediate_assume.v,7,assume(i == 0);,1
+picorv32.v,2109,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32.v,2112,restrict property (resetn != $initstate);,1
+picorv32.v,2122,assert (mem_wstrb == 0);,1
+picorv32.v,2134,assert (ok);,1
+picorv32.v,2152,assert(mem_valid);,1
+picorv32.v,2153,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2154,assert(mem_wstrb == 0);,1
+picorv32.v,2157,assert(mem_valid);,1
+picorv32.v,2158,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2159,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32.v,2160,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32.v,2163,assert(!mem_valid || mem_ready);,1
+tdt_dm.v,3486,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3489,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3491,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dm.v,3494,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dm.v,3496,assert property(when_anyunavail_is_high_anyrunning_must_be_low);,1
+tdt_dm.v,3499,assert property(when_anyunavail_is_high_anyrunning_must_be_low);,1
+tdt_dm.v,3501,assert property(when_anyunavail_is_high_anyhalted_must_be_low);,1
+tdt_dm.v,3504,assert property(when_anyunavail_is_high_anyhalted_must_be_low);,1
+tdt_dm.v,3506,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3509,assert property(when_allunavail_is_high_allrunning_must_be_low);,1
+tdt_dm.v,3511,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dm.v,3514,assert property(when_allunavail_is_high_allhalted_must_be_low);,1
+tdt_dtm_idr.v,219,assert property(update_dr_in_dmi_running_cannot_change_dmi_address);,1
+tdt_dtm_idr.v,222,assert property(update_dr_in_dmi_running_cannot_change_dmi_address);,1
+tdt_dtm_idr.v,224,assert property(update_dr_in_dmi_running_cannot_change_dmi_op);,1
+tdt_dtm_idr.v,227,assert property(update_dr_in_dmi_running_cannot_change_dmi_op);,1
+tdt_dtm_idr.v,229,assert property(update_dr_in_dmi_running_cannot_change_dmi_data);,1
+tdt_dtm_idr.v,232,assert property(update_dr_in_dmi_running_cannot_change_dmi_data);,1
+tdt_dtm_idr.v,234,assert property(update_dr_in_dmi_running_cannot_start_a_new_operation);,1
+tdt_dtm_idr.v,237,assert property(update_dr_in_dmi_running_cannot_start_a_new_operation);,1
+tdt_dtm_idr.v,239,assert property(set_op_when_capture_dr_in_dmi_running);,1
+tdt_dtm_idr.v,242,assert property(set_op_when_capture_dr_in_dmi_running);,1
+notrap_validop.v,29,restrict(&mem_ready_stall == 0);,1
+notrap_validop.v,39,assume(!mem_ready);,1
+notrap_validop.v,42,assert(!trap);,1
+mulcmp.v,60,assert(pcpi_wr_0 == pcpi_wr_1);,1
+mulcmp.v,61,assert(pcpi_rd_0 == pcpi_rd_1);,1
+mulcmp.v,70,assert(pcpi_wr_0 == pcpi_wr_ref);,1
+mulcmp.v,71,assert(pcpi_rd_0 == pcpi_rd_ref);,1
+mulcmp.v,81,assert(pcpi_wr_1 == pcpi_wr_ref);,1
+mulcmp.v,82,assert(pcpi_rd_1 == pcpi_rd_ref);,1
+tracecmp3.v,73,assert(cpu0_mem_addr == cpu1_mem_addr);,1
+tracecmp3.v,74,assert(cpu0_mem_wstrb == cpu1_mem_wstrb);,1
+tracecmp3.v,81,assert(trace_buffer_cpu0 == trace_buffer_cpu1);,1
+tracecmp2.v,36,assume(!mem_ready_0 == 0);,1
+tracecmp2.v,38,assume(mem_ready_1 == 0);,1
+tracecmp2.v,43,assume(last_mem_rdata == mem_rdata);,1
+tracecmp2.v,52,assert(mem_addr_0 == mem_addr_1);,1
+tracecmp2.v,53,assert(mem_wstrb_0 == mem_wstrb_1);,1
+tracecmp2.v,74,assume(!mem_xfer_0);,1
+tracecmp2.v,77,assert(cmp_mem_addr == mem_addr_1);,1
+tracecmp2.v,78,assert(cmp_mem_wstrb == mem_wstrb_1);,1
+tracecmp2.v,86,assume(!mem_xfer_1);,1
+tracecmp2.v,89,assert(cmp_mem_addr == mem_addr_0);,1
+tracecmp2.v,90,assert(cmp_mem_wstrb == mem_wstrb_0);,1
+tracecmp2.v,109,assert(trace_data_0 == trace_data_1);,1
+tracecmp2.v,122,assume(!trace_valid_0);,1
+tracecmp2.v,125,assert(cmp_trace_data == trace_data_1);,1
+tracecmp2.v,129,assume(!trace_valid_1);,1
+tracecmp2.v,132,assert(cmp_trace_data == trace_data_0);,1
+axicheck2.v,116,assert(trap_0 == trap_1 );,1
+axicheck2.v,117,assert(mem_axi_awvalid_0 == mem_axi_awvalid_1);,1
+axicheck2.v,118,assert(mem_axi_awaddr_0 == mem_axi_awaddr_1 );,1
+axicheck2.v,119,assert(mem_axi_awprot_0 == mem_axi_awprot_1 );,1
+axicheck2.v,120,assert(mem_axi_wvalid_0 == mem_axi_wvalid_1 );,1
+axicheck2.v,121,assert(mem_axi_wdata_0 == mem_axi_wdata_1 );,1
+axicheck2.v,122,assert(mem_axi_wstrb_0 == mem_axi_wstrb_1 );,1
+axicheck2.v,123,assert(mem_axi_bready_0 == mem_axi_bready_1 );,1
+axicheck2.v,124,assert(mem_axi_arvalid_0 == mem_axi_arvalid_1);,1
+axicheck2.v,125,assert(mem_axi_araddr_0 == mem_axi_araddr_1 );,1
+axicheck2.v,126,assert(mem_axi_arprot_0 == mem_axi_arprot_1 );,1
+axicheck2.v,127,assert(mem_axi_rready_0 == mem_axi_rready_1 );,1
+axicheck.v,84,restrict(timeout_aw != 15);,1
+axicheck.v,85,restrict(timeout_w != 15);,1
+axicheck.v,86,restrict(timeout_b != 15);,1
+axicheck.v,87,restrict(timeout_ar != 15);,1
+axicheck.v,88,restrict(timeout_r != 15);,1
+axicheck.v,89,restrict(timeout_ex != 15);,1
+axicheck.v,90,restrict(!trap);,1
+axicheck.v,97,assert(!mem_axi_awvalid);,1
+axicheck.v,98,assert(!mem_axi_wvalid );,1
+axicheck.v,99,assume(!mem_axi_bvalid );,1
+axicheck.v,100,assert(!mem_axi_arvalid);,1
+axicheck.v,101,assume(!mem_axi_rvalid );,1
+axicheck.v,106,assert(!mem_axi_awvalid);,1
+axicheck.v,110,assert(!mem_axi_wvalid);,1
+axicheck.v,114,assert(!mem_axi_arvalid);,1
+axicheck.v,122,assert(!expect_rvalid);,1
+axicheck.v,126,assert(!expect_bvalid_aw);,1
+axicheck.v,127,assert(!expect_bvalid_w);,1
+axicheck.v,131,assume(!mem_axi_bvalid);,1
+axicheck.v,135,assume(!mem_axi_rvalid);,1
+axicheck.v,150,assert(mem_axi_awvalid);,1
+axicheck.v,162,assert(mem_axi_arvalid);,1
+axicheck.v,174,assert(mem_axi_wvalid);,1
+axicheck.v,188,assume(mem_axi_bvalid);,1
+axicheck.v,198,assume(mem_axi_rvalid);,1
+cacheline_formal.v,113,assume(choice == 2'b00 || choice == 2'b01);,1
+cacheline_formal.v,124,assume(|attacker_hitmap);,1
+cacheline_formal.v,131,assume(hitmap1 == attacker_hitmap && hitmap2 == attacker_hitmap);,1
+cacheline_formal.v,152,assume(addr1 == addr2);,1
+cacheline_formal.v,173,assert(!check || eq_hit);,1
+SortUnitFlat.v,231,assert ( ^in_val !== 1'bx );,1
+SortUnitFlat.v,232,assert ( ^val_S1 !== 1'bx );,1
+SortUnitFlat.v,233,assert ( ^val_S2 !== 1'bx );,1
+SortUnitFlat.v,234,assert ( ^val_S3 !== 1'bx );,1
+SortUnitFlat.v,235,assert ( ^out_val !== 1'bx );,1
+SortUnitStruct.v,200,assert ( ^in_val !== 1'bx );,1
+SortUnitStruct.v,201,assert ( ^val_S1 !== 1'bx );,1
+SortUnitStruct.v,202,assert ( ^val_S2 !== 1'bx );,1
+SortUnitStruct.v,203,assert ( ^val_S3 !== 1'bx );,1
+SortUnitStruct.v,204,assert ( ^out_val !== 1'bx );,1
+adder_testbench.v,29,assert(sum == 15'd2);,1
+SortUnitFlat.v,231,assert ( ^in_val !== 1'bx );,1
+SortUnitFlat.v,232,assert ( ^val_S1 !== 1'bx );,1
+SortUnitFlat.v,233,assert ( ^val_S2 !== 1'bx );,1
+SortUnitFlat.v,234,assert ( ^val_S3 !== 1'bx );,1
+SortUnitFlat.v,235,assert ( ^out_val !== 1'bx );,1
+SortUnitStruct.v,200,assert ( ^in_val !== 1'bx );,1
+SortUnitStruct.v,201,assert ( ^val_S1 !== 1'bx );,1
+SortUnitStruct.v,202,assert ( ^val_S2 !== 1'bx );,1
+SortUnitStruct.v,203,assert ( ^val_S3 !== 1'bx );,1
+SortUnitStruct.v,204,assert ( ^out_val !== 1'bx );,1
+picorv32.v,2104,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32.v,2107,restrict property (resetn != $initstate);,1
+picorv32.v,2117,assert (mem_wstrb == 0);,1
+picorv32.v,2129,assert (ok);,1
+picorv32.v,2147,assert(mem_valid);,1
+picorv32.v,2148,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2149,assert(mem_wstrb == 0);,1
+picorv32.v,2152,assert(mem_valid);,1
+picorv32.v,2153,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2154,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32.v,2155,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32.v,2158,assert(!mem_valid || mem_ready);,1
+picorv32.v,2109,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32.v,2112,restrict property (resetn != $initstate);,1
+picorv32.v,2122,assert (mem_wstrb == 0);,1
+picorv32.v,2134,assert (ok);,1
+picorv32.v,2152,assert(mem_valid);,1
+picorv32.v,2153,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2154,assert(mem_wstrb == 0);,1
+picorv32.v,2157,assert(mem_valid);,1
+picorv32.v,2158,assert(mem_addr == last_mem_la_addr);,1
+picorv32.v,2159,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32.v,2160,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32.v,2163,assert(!mem_valid || mem_ready);,1
+picorv32a.v,2037,restrict property (|last_mem_nowait || mem_ready || !mem_valid);,1
+picorv32a.v,2040,restrict property (resetn != $initstate);,1
+picorv32a.v,2050,assert (mem_wstrb == 0);,1
+picorv32a.v,2062,assert (ok);,1
+picorv32a.v,2080,assert(mem_valid);,1
+picorv32a.v,2081,assert(mem_addr == last_mem_la_addr);,1
+picorv32a.v,2082,assert(mem_wstrb == 0);,1
+picorv32a.v,2085,assert(mem_valid);,1
+picorv32a.v,2086,assert(mem_addr == last_mem_la_addr);,1
+picorv32a.v,2087,assert(mem_wdata == last_mem_la_wdata);,1
+picorv32a.v,2088,assert(mem_wstrb == last_mem_la_wstrb);,1
+picorv32a.v,2091,assert(!mem_valid || mem_ready);,1
+wbqspiflash.v,1654,assert(f_nbits != 0);,1
+wbqspiflash.v,1677,assert(f_nsent + spi_len + 6'h4 == f_nbits);,1
+wbqspiflash.v,1679,assert(f_nsent + spi_len + 6'h1 == f_nbits);,1
+wbqspiflash.v,1695,assert(!o_cs_n);,1
+wbqspiflash.v,1711,assert(o_sck);,1
+wbqspiflash.v,1736,assert(!o_cs_n);,1
+wbqspiflash.v,1752,assert(f_nsent == f_nbits);,1
+zipdiv.v,398,assert(!o_busy);,1
+zipdiv.v,399,assert(!o_valid);,1
+zipdiv.v,400,assert(!o_err);,1
+zipdiv.v,402,assert(!r_busy);,1
+zipdiv.v,403,assert(!zero_divisor);,1
+zipdiv.v,404,assert(r_bit==0);,1
+zipdiv.v,405,assert(!last_bit);,1
+zipdiv.v,406,assert(!pre_sign);,1
+zipdiv.v,407,assert(!r_z);,1
+zipdiv.v,408,assert(r_dividend==0);,1
+zipdiv.v,409,assert(o_quotient==0);,1
+zipdiv.v,410,assert(!r_c);,1
+zipdiv.v,411,assert(r_divisor==0);,1
+zipdiv.v,423,assert(o_valid);,1
+zipdiv.v,434,assert(o_valid);,1
+zipdiv.v,438,assert(!pre_sign);,1
+zipdiv.v,442,assert(pre_sign);,1
+zipdiv.v,450,assert(o_busy);,1
+zipdiv.v,454,assert(!o_valid);,1
+zipdiv.v,462,assert(w_n == o_quotient[BW-1]);,1
+zipdiv.v,466,assert(!o_busy);,1
+zipdiv.v,493,assert(o_err);,1
+zipdiv.v,502,assert(r_divisor[BW-2:0] == 0);,1
+zipdiv.v,511,assert(r_divisor[2*BW-2]==0);,1
+zipdiv.v,515,assert(o_quotient[0]);,1
+zipdiv.v,517,assert(!o_quotient[0]);,1
+hazard3_frontend.v,192,assert(!fifo_valid[1]);,1
+hazard3_frontend.v,382,assert(ctr_flush_pending <= pending_fetches);,1
+hazard3_frontend.v,383,assert(pending_fetches < 2'd3);,1
+hazard3_frontend.v,532,assert(cir_vld <= 2);,1
+hazard3_frontend.v,533,assert(cir_use <= cir_vld);,1
+hazard3_frontend.v,535,assert(buf_level_next >= level_next_no_fetch);,1
+hazard3_frontend.v,554,assert(buf_level != 2'h3);,1
+hazard3_instr_decompress.v,430,assert(in_uop_seq || uop_ctr == 4'h0);,1
+hazard3_instr_decompress.v,431,assert(in_uop_seq || zcmp_ls_reg == 5'h01);,1
+hazard3_instr_decompress.v,432,assert(in_uop_seq || !uop_atomic);,1
+hazard3_instr_decompress.v,433,assert(in_uop_seq || !uop_no_pc_update);,1
+hazard3_instr_decompress.v,435,assert(in_uop_seq);,1
+hazard3_instr_decompress.v,436,assert(instr_out_uop_stall || uop_ctr_nxt == 4'h0);,1
+hazard3_power_ctrl.v,137,assert(past_sleeping);,1
+hazard3_power_ctrl.v,139,assert(sleeping_on_wfi|| sleeping_on_block);,1
+hazard3_power_ctrl.v,142,assert(!past_stall_release);,1
+hazard3_power_ctrl.v,145,assert(allow_power_down || allow_clkgate);,1
+hazard3_core.v,494,assert(d_rs1_predecoded == d_rs1);,1
+hazard3_core.v,496,assert(d_rs2_predecoded == d_rs2);,1
+hazard3_core.v,499,assert(~|d_rs1);,1
+hazard3_core.v,501,assert(~|d_rs2);,1
+hazard3_core.v,596,assert(x_amo_phase == 3'h0 || x_amo_phase == 3'h2 || x_amo_phase == 3'h4);,1
+hazard3_core.v,601,assert(x_unaligned_addr);,1
+hazard3_core.v,608,assert(x_amo_phase == 3'h0);,1
+hazard3_core.v,640,assert(x_amo_phase <= 3'h4);,1
+hazard3_core.v,643,assert(x_amo_phase == 3'h0);,1
+hazard3_core.v,646,assert(x_amo_phase == 3'h0);,1
+hazard3_core.v,650,assert(!x_stall || m_stall);,1
+hazard3_core.v,654,assert(x_unaligned_addr);,1
+hazard3_core.v,658,assert(!x_unaligned_addr);,1
+hazard3_core.v,665,assert(!m_stall);,1
+hazard3_core.v,1143,assert(xm_except == EXCEPT_LOAD_FAULT || xm_except == EXCEPT_STORE_FAULT);,1
+hazard3_core.v,1155,assert(xm_memop != MEMOP_NONE);,1
+hazard3_core.v,1164,assert(!xm_except_to_d_mode);,1
+hazard3_core.v,1165,assert(!xm_sleep_wfi);,1
+hazard3_core.v,1166,assert(!xm_sleep_block);,1
+hazard3_core.v,1167,assert(!unblock_out);,1
+hazard3_core.v,1175,assert(!bus_aph_req_d);,1
+hazard3_core.v,1185,assert(!bus_aph_req_d);,1
+hazard3_core.v,1190,assert(xm_memop == MEMOP_NONE || xm_memop == MEMOP_AMO);,1
+hazard3_core.v,1377,assert(m_reg_wen_if_nonzero);,1
+hazard3_core.v,1379,assert(~|xm_rd);,1
+hazard3_csr.v,1400,assume(except == EXCEPT_NONE || except == EXCEPT_MRET);,1
+hazard3_csr.v,1427,assert(!wen);,1
+hazard3_csr.v,1431,assert(except != EXCEPT_MRET);,1
+hazard3_csr.v,1435,assert(except != EXCEPT_MRET);,1
+hazard3_csr.v,1457,assert(trap_enter_vld);,1
+hazard3_csr.v,1459,assert(!trap_is_irq);,1
+hazard3_csr.v,1464,assert(except == EXCEPT_EBREAK);,1
+hazard3_csr.v,1469,assert(!loadstore_dphase_pending);,1
+hazard3_csr.v,1477,assert(trap_enter_vld);,1
+hazard3_shift_barrel.v,55,assert(dout == din >> shamt);,1
+hazard3_shift_barrel.v,57,assert(dout == din << shamt);,1
+hazard3_muldiv_seq.v,274,assert(op_rdy);,1
+hazard3_muldiv_seq.v,290,assert(alive);,1
+sync_fifo.v,107,assume(rst_n);,1
+sync_fifo.v,111,assert(level <= DEPTH);,1
+tb.v,154,assume(test_mem[i] == $anyconst);,1
+tb.v,167,assume(src_haddr < MEM_SIZE_BYTES);,1
+tb.v,169,assume(!src_htrans[0]);,1
+tb.v,171,assume(8 << src_hsize <= W_DATA);,1
+tb.v,185,assume(!src_hwrite);,1
+tb.v,192,assert(src_hready);,1
+tb.v,193,assert(!src_hresp);,1
+tb.v,201,assert(src_hresp);,1
+tb.v,212,assert(dst_haddr < MEM_SIZE_BYTES);,1
+tb.v,214,assert(8 << dst_hsize <= W_DATA);,1
+tb.v,229,assert(dst_active_dph);,1
+tb.v,234,assert(dst_haddr == dst_addr_dph + W_DATA / 8);,1
+tb.v,242,assume(dst_hready_resp);,1
+tb.v,243,assume(!dst_hresp);,1
+tb.v,251,assume(dst_hresp);,1
+tb.v,264,assert(src_hrdata == src_hrdata_expect);,1
+tb.v,187,assume(src_haddr < MEM_SIZE_BYTES);,1
+tb.v,189,assume(!src_htrans[0]);,1
+tb.v,191,assume(8 << src_hsize <= W_DATA);,1
+tb.v,213,assert(src_hready);,1
+tb.v,214,assert(!src_hresp);,1
+tb.v,222,assert(src_hresp);,1
+tb.v,233,assert(dst_haddr < MEM_SIZE_BYTES);,1
+tb.v,235,assert(8 << dst_hsize <= W_DATA);,1
+tb.v,250,assert(dst_active_dph);,1
+tb.v,255,assert(dst_haddr == dst_addr_dph + W_DATA / 8);,1
+tb.v,266,assume(dst_hready_resp);,1
+tb.v,267,assume(!dst_hresp);,1
+tb.v,275,assume(dst_hresp);,1
+tb.v,306,assume(src_hready);,1
+tb.v,307,assume(!src_hresp);,1
+tb.v,308,assume(src_active_dph);,1
+tb.v,309,assume(src_write_dph);,1
+tb.v,310,assume(src_addr_dph <= check_addr);,1
+tb.v,314,assume(src_prot_dph[3:2] == 2'b11);,1
+tb.v,329,assume(src_hready);,1
+tb.v,330,assume(!src_hresp);,1
+tb.v,331,assume(src_active_dph);,1
+tb.v,332,assume(!src_write_dph);,1
+tb.v,333,assume(src_addr_dph <= check_addr);,1
+tb.v,335,assume(src_prot_dph[3:2] == 2'b11);,1
+CHECKER.sv,110,property over_1; @(negedge clk) check_INDEX_CHECK |=> ##[4:1003] inf.out_valid; endproperty: over_1,3
+CHECKER.sv,119,property over_2; @(negedge clk) check_UPDATE |=> ##[4:1003] inf.out_valid; endproperty: over_2,3
+CHECKER.sv,132,property over_3; @(negedge clk) check_VALID_CHECK |=> ##[1:1000] inf.out_valid; endproperty: over_3,3
+CHECKER.sv,143,property complete; @(negedge clk) inf.complete |-> inf.warn_msg === 'b0; endproperty: complete,3
+CHECKER.sv,166,property sel_index; @(posedge clk) (inf.sel_action_valid && golden_act === Index_Check) |-> ##[1:4] inf.formula_valid; endproperty: sel_index,3
+CHECKER.sv,173,property mode_index; @(posedge clk) (inf.formula_valid && golden_act === Index_Check) |-> ##[1:4] inf.mode_valid; endproperty: mode_index,3
+CHECKER.sv,180,property today_index; @(posedge clk) (inf.mode_valid && golden_act === Index_Check) |-> ##[1:4] inf.date_valid; endproperty: today_index,3
+CHECKER.sv,187,property data_no_index; @(posedge clk) (inf.date_valid && golden_act === Index_Check) |-> ##[1:4] inf.data_no_valid; endproperty: data_no_index,3
+CHECKER.sv,194,property index_index; @(posedge clk) (inf.data_no_valid && golden_act === Index_Check) |-> ##[1:4] inf.index_valid; endproperty: index_index,3
+CHECKER.sv,201,property index_index_1; @(posedge clk) (inf.index_valid && golden_act === Index_Check && cnt_index!==3) |-> ##[1:4] inf.index_valid; endproperty: index_index_1,3
+CHECKER.sv,208,property sel_update; @(posedge clk) (inf.sel_action_valid && golden_act === Update) |-> ##[1:4] inf.date_valid; endproperty: sel_update,3
+CHECKER.sv,215,property data_no_update; @(posedge clk) (inf.date_valid && golden_act === Update) |-> ##[1:4] inf.data_no_valid; endproperty: data_no_update,3
+CHECKER.sv,222,property index_update; @(posedge clk) (inf.data_no_valid && golden_act === Update) |-> ##[1:4] inf.index_valid; endproperty: index_update,3
+CHECKER.sv,229,property index_update_1; @(posedge clk) (inf.index_valid && golden_act === Update && cnt_index!==3) |-> ##[1:4] inf.index_valid; endproperty: index_update_1,3
+CHECKER.sv,238,property sel_Valid_Date; @(posedge clk) (inf.sel_action_valid && golden_act === Check_Valid_Date) |-> ##[1:4] inf.date_valid; endproperty: sel_Valid_Date,3
+CHECKER.sv,245,property data_no_Valid_Date; @(posedge clk) (inf.date_valid && golden_act === Check_Valid_Date) |-> ##[1:4] inf.data_no_valid; endproperty: data_no_Valid_Date,3
+CHECKER.sv,264,property out_for_one; @(negedge clk) inf.out_valid |=> !inf.out_valid; endproperty: out_for_one,3
+CHECKER.sv,308,property real_date; @(posedge clk) inf.date_valid |-> !date_fail; endproperty: real_date,3
+CHECKER.sv,319,property AR_VALID_overlap; @(posedge clk) inf.AR_VALID |-> !inf.AW_VALID; endproperty: AR_VALID_overlap,3
+CHECKER.sv,81,property p_reset; @(negedge inf.rst_n) inf.rst_n === 1 |=> (@(negedge rst_reg) (inf.out_valid === 0 && inf.err_msg === 0 && inf.out_info === 0 && inf.complete === 0 && inf.C_addr === 0 && inf.C_data_w === 0 && inf.C_in_valid === 0 && inf.C_r_wb === 0 && //FD output inf.C_out_valid === 0 && inf.C_data_r === 0 && inf.R_READY === 0 && inf.AR_ADDR === 0 && inf.AR_VALID === 0 && inf.W_VALID === 0 && inf.B_READY === 0 && inf.AW_ADDR === 0 && inf.AW_VALID === 0 && inf.W_DATA === 0 //bridge output )); endproperty: p_reset,7
+CHECKER.sv,98,property p_err_msg; @(negedge clk) (inf.out_valid === 1 && inf.complete === 1 |-> inf.err_msg === 4'b0); endproperty: p_err_msg,3
+CHECKER.sv,111,property p_out_info; @(negedge clk) (inf.out_valid === 1 && inf.complete === 0 |-> inf.out_info === 64'b0); endproperty: p_out_info,3
+CHECKER.sv,127,property p_gap_min; @(posedge clk) valid_combine === 1 |=> valid_combine === 0; endproperty: p_gap_min,3
+CHECKER.sv,131,property p_gap_max; @(posedge clk) inf.act_valid === 1 |=> ##[1:5] valid_without_act === 1; endproperty: p_gap_max,3
+CHECKER.sv,155,property p_take_0; @(posedge clk) (action_reg === Take && inf.id_valid === 1) |=> ##[1:5] inf.cus_valid === 1; endproperty: p_take_0,3
+CHECKER.sv,159,property p_order_0; @(posedge clk) (action_reg === Order && inf.res_valid) |=> ##[1:5] inf.food_valid === 1; endproperty: p_order_0,3
+CHECKER.sv,163,property p_cancel_0; @(posedge clk) (action_reg === Cancel && inf.res_valid) |=> ##[1:5] inf.food_valid === 1; endproperty: p_cancel_0,3
+CHECKER.sv,167,property p_cancel_1; @(posedge clk) (action_reg === Cancel && inf.food_valid) |=> ##[1:5] inf.id_valid === 1; endproperty: p_cancel_1,3
+CHECKER.sv,201,property p_act_valid; @(posedge clk) (inf.act_valid === 1 |-> inf.id_valid === 0 && inf.cus_valid === 0 && inf.res_valid === 0 && inf.food_valid === 0); endproperty: p_act_valid,3
+CHECKER.sv,205,property p_id_valid; @(posedge clk) (inf.id_valid === 1 |-> inf.act_valid === 0 && inf.cus_valid === 0 && inf.res_valid === 0 && inf.food_valid === 0); endproperty: p_id_valid,3
+CHECKER.sv,209,property p_cus_valid; @(posedge clk) (inf.cus_valid === 1 |-> inf.id_valid === 0 && inf.act_valid === 0 && inf.res_valid === 0 && inf.food_valid === 0); endproperty: p_cus_valid,3
+CHECKER.sv,213,property p_res_valid; @(posedge clk) (inf.res_valid === 1 |-> inf.id_valid === 0 && inf.cus_valid === 0 && inf.act_valid === 0 && inf.food_valid === 0); endproperty: p_res_valid,3
+CHECKER.sv,217,property p_food_valid; @(posedge clk) (inf.food_valid === 1 |-> inf.id_valid === 0 && inf.cus_valid === 0 && inf.res_valid === 0 && inf.act_valid === 0); endproperty: p_food_valid,3
+CHECKER.sv,230,property p_out_valid; @(negedge clk) (inf.out_valid === 1 |=> inf.out_valid === 0); endproperty: p_out_valid,3
+CHECKER.sv,243,property p_delay_out_to_next; @(negedge clk) (inf.out_valid |=> @(posedge clk) inf.act_valid === 0 [*2]); endproperty: p_delay_out_to_next,3
+CHECKER.sv,247,property p_delay_next; @(negedge clk) (inf.out_valid |=> @(posedge clk) ##[2:10] inf.act_valid === 1); endproperty: p_delay_next,3
+CHECKER.sv,259,property p_latency; @(posedge clk) (inf.id_valid && (action_reg === Deliver || action_reg === Cancel)) || (inf.cus_valid && action_reg === Take) || (inf.food_valid && action_reg === Order) |=> @(negedge clk) ## [1:1199] inf.out_valid === 1; endproperty: p_latency,5
+CHECKER_iclab081.sv,139,property reset_check; @(posedge clk) disable iff (inf.rst_n) inf.out_valid === 1'b0 && inf.warn_msg === 2'b0 && inf.complete === 1'b0 && inf.AR_VALID === 1'b0 && inf.AR_ADDR === 17'b0 && inf.R_READY === 1'b0 && inf.AW_VALID === 1'b0 && inf.AW_ADDR === 17'b0 && inf.W_VALID === 1'b0 && inf.W_DATA === 64'b0 && inf.B_READY === 1'b0; endproperty: reset_check,4
+CHECKER_iclab081.sv,170,property latency_check_1; @(negedge clk) disable iff (!inf.rst_n) (action_reg == Index_Check && in_valid_count == 3 && inf.index_valid) |=> ##[0:999] inf.out_valid; endproperty: latency_check_1,4
+CHECKER_iclab081.sv,175,property latency_check_2; @(negedge clk) disable iff (!inf.rst_n) (action_reg == Update && in_valid_count == 3 && inf.index_valid) |=> ##[0:999] inf.out_valid; endproperty: latency_check_2,4
+CHECKER_iclab081.sv,180,property latency_check_3; @(negedge clk) disable iff (!inf.rst_n) (action_reg == Check_Valid_Date && inf.data_no_valid) |=> ##[0:999] inf.out_valid; endproperty: latency_check_3,4
+CHECKER_iclab081.sv,191,property complete_check; @(negedge clk) disable iff (!inf.rst_n) inf.complete |-> inf.warn_msg == 2'b00; endproperty: complete_check,4
+CHECKER_iclab081.sv,202,property formula_valid_check; @(negedge clk) disable iff (!inf.rst_n) (inf.sel_action_valid && inf.D.d_act[0] == 2'b00) |=> ##[0:3] inf.formula_valid; endproperty: formula_valid_check,4
+CHECKER_iclab081.sv,213,property mode_valid_check; @(negedge clk) disable iff (!inf.rst_n) inf.formula_valid |=> ##[0:3] inf.mode_valid; endproperty: mode_valid_check,4
+CHECKER_iclab081.sv,224,property date_valid_check; @(negedge clk) disable iff (!inf.rst_n) (inf.mode_valid || (inf.sel_action_valid && (inf.D.d_act[0] == 2'b01 || inf.D.d_act[0] == 2'b10))) |=> ##[0:3] inf.date_valid; endproperty: date_valid_check,4
+CHECKER_iclab081.sv,235,property data_no_valid_check; @(negedge clk) disable iff (!inf.rst_n) inf.date_valid |=> ##[0:3] inf.data_no_valid; endproperty: data_no_valid_check,4
+CHECKER_iclab081.sv,246,property index_valid_check; @(negedge clk) disable iff (!inf.rst_n) ((action_reg == Index_Check || action_reg == Update) && (inf.data_no_valid || (inf.index_valid && in_valid_count < 3))) |=> ##[0:3] inf.index_valid; endproperty: index_valid_check,4
+CHECKER_iclab081.sv,257,property overlap_check; @(negedge clk) disable iff (!inf.rst_n) (inf.sel_action_valid || inf.formula_valid || inf.mode_valid || inf.date_valid || inf.data_no_valid || inf.index_valid) |-> (inf.sel_action_valid + inf.formula_valid + inf.mode_valid + inf.date_valid + inf.data_no_valid + inf.index_valid == 1); endproperty: overlap_check,5
+CHECKER_iclab081.sv,269,property out_valid_check; @(negedge clk) disable iff (!inf.rst_n) inf.out_valid |=> !inf.out_valid; endproperty: out_valid_check,4
+CHECKER_iclab081.sv,280,property next_input_check; @(negedge clk) disable iff (!inf.rst_n) $fell(inf.out_valid) |=> ##[0:3] inf.sel_action_valid; endproperty: next_input_check,4
+CHECKER_iclab081.sv,291,property date_check; @(negedge clk) disable iff (!inf.rst_n) inf.date_valid |-> ( (inf.D.d_date[0][8:5] == 1 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) || (inf.D.d_date[0][8:5] == 2 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 28) || (inf.D.d_date[0][8:5] == 3 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) || (inf.D.d_date[0][8:5] == 4 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 30) || (inf.D.d_date[0][8:5] == 5 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) || (inf.D.d_date[0][8:5] == 6 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 30) || (inf.D.d_date[0][8:5] == 7 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) || (inf.D.d_date[0][8:5] == 8 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) || (inf.D.d_date[0][8:5] == 9 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 30) || (inf.D.d_date[0][8:5] == 10 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) || (inf.D.d_date[0][8:5] == 11 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 30) || (inf.D.d_date[0][8:5] == 12 && inf.D.d_date[0][4:0] > 0 && inf.D.d_date[0][4:0] <= 31) ); endproperty: date_check,18
+CHECKER.sv,131,property AssertSpec1; @(posedge inf.rst_n) (1) |-> @(posedge clk) ( inf.out_valid === 0 && inf.warn_msg === No_Warn && inf.complete === 0 && inf.AR_VALID === 0 && inf.R_READY === 0 && inf.AW_VALID === 0 && inf.W_VALID === 0 && inf.B_READY === 0 && inf.AR_ADDR === 0 && inf.AW_ADDR === 0 && inf.W_DATA === 0 ); endproperty : AssertSpec1,15
+CHECKER.sv,148,property AssertSpec2_IndexCheck; @(posedge clk) ( inf.sel_action_valid === 1 && inf.D.d_act[0] === Index_Check ) ##[1: 4] inf.formula_valid === 1 ##[1: 4] inf.mode_valid === 1 ##[1: 4] inf.date_valid === 1 ##[1: 4] inf.data_no_valid === 1 ##1( ##[0: 3] inf.index_valid === 1 )[*4] |-> ##[1:999] inf.out_valid === 1; endproperty : AssertSpec2_IndexCheck,15
+CHECKER.sv,164,property AssertSpec2_Update; @(posedge clk) ( inf.sel_action_valid === 1 && inf.D.d_act[0] === Update ) ##[1: 4] inf.date_valid === 1 ##[1: 4] inf.data_no_valid === 1 ##1( ##[0: 3] inf.index_valid === 1 )[*4] |-> ##[1:999] inf.out_valid === 1; endproperty : AssertSpec2_Update,13
+CHECKER.sv,178,property AssertSpec2_CheckValidDate; @(posedge clk) ( inf.sel_action_valid === 1 && inf.D.d_act[0] === Check_Valid_Date ) ##[1: 4] inf.date_valid === 1 ##[1: 4] inf.data_no_valid === 1 |-> ##[1:999] inf.out_valid === 1; endproperty : AssertSpec2_CheckValidDate,10
+CHECKER.sv,190,property AssertSpec3; @(negedge clk) ( inf.complete === 1 ) |-> ( inf.warn_msg === No_Warn ); endproperty : AssertSpec3,7
+CHECKER.sv,199,property AssertSpec4_IndexCheck; @(posedge clk) ( inf.sel_action_valid === 1 && inf.D.d_act[0] === Index_Check ) |-> ( ##[1: 4] inf.formula_valid === 1 ##[1: 4] inf.mode_valid === 1 ##[1: 4] inf.date_valid === 1 ##[1: 4] inf.data_no_valid === 1 ##1( ##[0: 3] inf.index_valid === 1 )[*4] ); endproperty : AssertSpec4_IndexCheck,14
+CHECKER.sv,214,property AssertSpec4_Update; @(posedge clk) ( inf.sel_action_valid === 1 && inf.D.d_act[0] === Update ) |-> ( ##[1: 4] inf.date_valid === 1 ##[1: 4] inf.data_no_valid === 1 ##1( ##[0: 3] inf.index_valid === 1 )[*4] ); endproperty : AssertSpec4_Update,12
+CHECKER.sv,227,property AssertSpec4_CheckValidDate; @(posedge clk) ( inf.sel_action_valid === 1 && inf.D.d_act[0] === Check_Valid_Date ) |-> ( ##[1: 4] inf.date_valid === 1 ##[1: 4] inf.data_no_valid === 1 ); endproperty : AssertSpec4_CheckValidDate,9
+CHECKER.sv,238,property AssertSpec5_sel_action; @(posedge clk) ( inf.sel_action_valid === 1 ) |-> ( inf.formula_valid === 0 && inf.mode_valid === 0 && inf.date_valid === 0 && inf.data_no_valid === 0 && inf.index_valid === 0 ); endproperty : AssertSpec5_sel_action,11
+CHECKER.sv,250,property AssertSpec5_formula; @(posedge clk) ( inf.formula_valid === 1 ) |-> ( inf.sel_action_valid === 0 && inf.mode_valid === 0 && inf.date_valid === 0 && inf.data_no_valid === 0 && inf.index_valid === 0 ); endproperty : AssertSpec5_formula,11
+CHECKER.sv,262,property AssertSpec5_mode; @(posedge clk) ( inf.mode_valid === 1 ) |-> ( inf.sel_action_valid === 0 && inf.formula_valid === 0 && inf.date_valid === 0 && inf.data_no_valid === 0 && inf.index_valid === 0 ); endproperty : AssertSpec5_mode,11
+CHECKER.sv,274,property AssertSpec5_date; @(posedge clk) ( inf.date_valid === 1 ) |-> ( inf.sel_action_valid === 0 && inf.formula_valid === 0 && inf.mode_valid === 0 && inf.data_no_valid === 0 && inf.index_valid === 0 ); endproperty : AssertSpec5_date,11
+CHECKER.sv,286,property AssertSpec5_data_no; @(posedge clk) ( inf.data_no_valid === 1 ) |-> ( inf.sel_action_valid === 0 && inf.formula_valid === 0 && inf.mode_valid === 0 && inf.date_valid === 0 && inf.index_valid === 0 ); endproperty : AssertSpec5_data_no,11
+CHECKER.sv,298,property AssertSpec5_index; @(posedge clk) ( inf.index_valid === 1 ) |-> ( inf.sel_action_valid === 0 && inf.formula_valid === 0 && inf.mode_valid === 0 && inf.date_valid === 0 && inf.data_no_valid === 0 ); endproperty : AssertSpec5_index,11
+CHECKER.sv,311,property AssertSpec6; @(posedge clk) ( inf.out_valid !== 0 ) |=> ( inf.out_valid === 0 ); endproperty : AssertSpec6,7
+CHECKER.sv,320,property AssertSpec7; @(posedge clk) ( inf.out_valid === 1 ) |-> ( ##[1:4] inf.sel_action_valid === 1 ); endproperty : AssertSpec7,7
+CHECKER.sv,329,property AssertSpec8; @(posedge clk) ( inf.date_valid === 1 ) |-> ( (inf.D.d_date[0].M >= 1 && inf.D.d_date[0].M <= 12) && (inf.D.d_date[0].D >= 1 && ( ( inf.D.d_date[0].M == 1 || inf.D.d_date[0].M == 3 || inf.D.d_date[0].M == 5 || inf.D.d_date[0].M == 7 || inf.D.d_date[0].M == 8 || inf.D.d_date[0].M == 10 || inf.D.d_date[0].M == 12 ) && inf.D.d_date[0].D <= 31 || ( inf.D.d_date[0].M == 4 || inf.D.d_date[0].M == 6 || inf.D.d_date[0].M == 9 || inf.D.d_date[0].M == 11 ) && inf.D.d_date[0].D <= 30 || ( inf.D.d_date[0].M == 2 ) && inf.D.d_date[0].D <= 28 ) ) ); endproperty : AssertSpec8,23
+CHECKER.sv,354,property AssertSpec9; @(posedge clk) ( inf.AR_VALID === 1 || inf.AW_VALID === 1 ) |-> ( inf.AR_VALID ^ inf.AW_VALID ); endproperty : AssertSpec9,8
