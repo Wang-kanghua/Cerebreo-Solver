@@ -1,0 +1,207 @@
+[
+  {
+    "testpoint_id": "T1",
+    "bins": [
+      {
+        "bin_id": "BIN_T1_1",
+        "description": "Execute ADD operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_2",
+        "description": "Execute SUB operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0100000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_3",
+        "description": "Execute AND operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b111) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_4",
+        "description": "Execute OR operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b110) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_5",
+        "description": "Execute XOR operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b100) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_6",
+        "description": "Execute SLL operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b001) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_7",
+        "description": "Execute SRL operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_8",
+        "description": "Execute SRA operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0100000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_9",
+        "description": "Execute SLT operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b010) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_10",
+        "description": "Execute SLTU operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b011) & (instruction[31:25] == 0b0000000) & (instruction[11:7] != 0)"
+      },
+      {
+        "bin_id": "BIN_T1_11",
+        "description": "Execute SW operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b010) & ((instruction[31:25] != 0) | (instruction[11:7] != 0))"
+      },
+      {
+        "bin_id": "BIN_T1_12",
+        "description": "Execute SH operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b001) & ((instruction[31:25] != 0) | (instruction[11:7] != 0))"
+      },
+      {
+        "bin_id": "BIN_T1_13",
+        "description": "Execute SB operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b000) & ((instruction[31:25] != 0) | (instruction[11:7] != 0))"
+      },
+      {
+        "bin_id": "BIN_T1_14",
+        "description": "Execute JAL operation at least once",
+        "sat_expression": "(instruction[6:0] == 0b1101111) & (instruction[11:7] != 0) & (instruction[31] | instruction[30:21] | instruction[20] | instruction[19:12] != 0)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T2",
+    "bins": [
+      {
+        "bin_id": "BIN_T2_1",
+        "description": "Execute ADD operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_2",
+        "description": "Execute SUB operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0100000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_3",
+        "description": "Execute AND operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b111) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_4",
+        "description": "Execute OR operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b110) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_5",
+        "description": "Execute XOR operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b100) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_6",
+        "description": "Execute SLL operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b001) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_7",
+        "description": "Execute SRL operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_8",
+        "description": "Execute SRA operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0100000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_9",
+        "description": "Execute SLT operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b010) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_10",
+        "description": "Execute SLTU operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b011) & (instruction[31:25] == 0b0000000) & (instruction[11:7] == 0)"
+      },
+      {
+        "bin_id": "BIN_T2_11",
+        "description": "Execute JAL operation with register zero as destination (rd)",
+        "sat_expression": "(instruction[6:0] == 0b1101111) & (instruction[11:7] == 0) & (instruction[31] | instruction[30:21] | instruction[20] | instruction[19:12] != 0)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T3",
+    "bins": [
+      {
+        "bin_id": "BIN_T3_1",
+        "description": "Execute ADD operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_2",
+        "description": "Execute SUB operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0100000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_3",
+        "description": "Execute AND operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b111) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_4",
+        "description": "Execute OR operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b110) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_5",
+        "description": "Execute XOR operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b100) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_6",
+        "description": "Execute SLL operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b001) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_7",
+        "description": "Execute SRL operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_8",
+        "description": "Execute SRA operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0100000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_9",
+        "description": "Execute SLT operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b010) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_10",
+        "description": "Execute SLTU operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b011) & (instruction[31:25] == 0b0000000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_11",
+        "description": "Execute SW operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b010) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_12",
+        "description": "Execute SH operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b001) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      },
+      {
+        "bin_id": "BIN_T3_13",
+        "description": "Execute SB operation with register zero as source register (rs1 or rs2)",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b000) & ((instruction[19:15] == 0) | (instruction[24:20] == 0))"
+      }
+    ]
+  }
+]
