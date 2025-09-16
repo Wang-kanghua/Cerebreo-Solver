@@ -1,0 +1,147 @@
+[
+  {
+    "testpoint_id": "T4",
+    "bins": [
+      {
+        "bin_id": "BIN_T4_1",
+        "description": "Execute ADD operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_2",
+        "description": "Execute SUB operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b000) & (instruction[31:25] == 0b0100000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_3",
+        "description": "Execute AND operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b111) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_4",
+        "description": "Execute OR operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b110) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_5",
+        "description": "Execute XOR operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b100) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_6",
+        "description": "Execute SLL operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b001) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_7",
+        "description": "Execute SRL operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_8",
+        "description": "Execute SRA operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b101) & (instruction[31:25] == 0b0100000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_9",
+        "description": "Execute SLT operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b010) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_10",
+        "description": "Execute SLTU operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0110011) & (instruction[14:12] == 0b011) & (instruction[31:25] == 0b0000000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_11",
+        "description": "Execute SW operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b010) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_12",
+        "description": "Execute SH operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b001) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      },
+      {
+        "bin_id": "BIN_T4_13",
+        "description": "Execute SB operation with both source registers being the same register file",
+        "sat_expression": "(instruction[6:0] == 0b0100011) & (instruction[14:12] == 0b000) & (instruction[19:15] == instruction[24:20]) & (instruction[19:15] != 0)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T5",
+    "bins": [
+      {
+        "bin_id": "BIN_T5_1",
+        "description": "Execute JAL operation with forward jump (positive immediate value)",
+        "sat_expression": "(instruction[6:0] == 0b1101111) & (instruction[31] == 0) & (instruction[30:21] != 0 | instruction[20] != 0 | instruction[19:12] != 0)"
+      },
+      {
+        "bin_id": "BIN_T5_2",
+        "description": "Execute JAL operation with backward jump (negative immediate value)",
+        "sat_expression": "(instruction[6:0] == 0b1101111) & (instruction[31] == 1) & (instruction[30:21] != 0 | instruction[20] != 0 | instruction[19:12] != 0)"
+      }
+    ]
+  },
+  {
+    "testpoint_id": "T6",
+    "bins": [
+      {
+        "bin_id": "BIN_T6_ADD_1",
+        "description": "Current instruction reads from a register which previous ADD instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SUB_1",
+        "description": "Current instruction reads from a register which previous SUB instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b000) & (prev_instruction[31:25] == 0b0100000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_AND_1",
+        "description": "Current instruction reads from a register which previous AND instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b111) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_OR_1",
+        "description": "Current instruction reads from a register which previous OR instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b110) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_XOR_1",
+        "description": "Current instruction reads from a register which previous XOR instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b100) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SLL_1",
+        "description": "Current instruction reads from a register which previous SLL instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b001) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SRL_1",
+        "description": "Current instruction reads from a register which previous SRL instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b101) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SRA_1",
+        "description": "Current instruction reads from a register which previous SRA instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b101) & (prev_instruction[31:25] == 0b0100000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SLT_1",
+        "description": "Current instruction reads from a register which previous SLT instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b010) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_SLTU_1",
+        "description": "Current instruction reads from a register which previous SLTU instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b0110011) & (prev_instruction[14:12] == 0b011) & (prev_instruction[31:25] == 0b0000000) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      },
+      {
+        "bin_id": "BIN_T6_JAL_1",
+        "description": "Current instruction reads from a register which previous JAL instruction wrote to",
+        "sat_expression": "(prev_instruction[6:0] == 0b1101111) & (prev_instruction[11:7] != 0) & (instruction[19:15] == prev_instruction[11:7] | instruction[24:20] == prev_instruction[11:7])"
+      }
+    ]
+  }
+]
